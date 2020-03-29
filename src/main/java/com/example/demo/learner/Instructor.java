@@ -20,7 +20,9 @@ public class Instructor extends Person implements Teacher {
 
     @Override
     public void lecture(Iterable<? extends Learner> learners, double numOfHours) {
-        Double hrsPer = numOfHours/((ArrayList<Learner>) learners).size();
+        ArrayList<Learner> learnerList = new ArrayList<>();
+        learners.forEach(learnerList::add);
+        double hrsPer = numOfHours / learnerList.size();
         learners.forEach(l -> l.learn(hrsPer));
         numberOfHoursTaught += numOfHours;
     }

@@ -32,12 +32,15 @@ public class InstructorsConfigTest {
     @Qualifier("instructors")
     private Instructors zipCodeInstructors;
 
+    @Autowired
+    private InstructorsConfig config;
+
     @Test
     public void setTcUsaInstructorsTest(){
         // Given
         Integer expected = 5;
         // When
-        Integer actual = tcUsaInstructors.size();
+        Integer actual = config.tcUsaInstructors().size();
         // Then
         Assert.assertEquals(expected, actual);
         logger.log(Level.INFO, tcUsaInstructors.toString());
@@ -48,10 +51,10 @@ public class InstructorsConfigTest {
         // Given
         Integer expected = 5;
         // When
-        Integer actual = tcUkInstructors.size();
+        Integer actual = config.tcUkInstructors().size();
         // Then
         Assert.assertEquals(expected, actual);
-        logger.log(Level.INFO, tcUsaInstructors.toString());
+        logger.log(Level.INFO, tcUkInstructors.toString());
     }
 
     @Test
@@ -59,7 +62,7 @@ public class InstructorsConfigTest {
         // Given
         Integer expected = 5;
         // When
-        Integer actual = zipCodeInstructors.size();
+        Integer actual = config.zipCodeInstructors().size();
         // Then
         Assert.assertEquals(expected, actual);
         logger.log(Level.INFO, zipCodeInstructors.toString());

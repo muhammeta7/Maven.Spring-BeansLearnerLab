@@ -1,6 +1,8 @@
 package com.example.demo.configs;
 
 import com.example.demo.learner.Classroom;
+import com.example.demo.learner.Instructors;
+import com.example.demo.learner.Students;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,15 +18,24 @@ import java.util.logging.Logger;
 @SpringBootTest
 public class ClassroomConfigTest {
 
-    Logger logger = Logger.getLogger(this.getClass().getName());
+    @Autowired
+    @Qualifier("students")
+    private Students currentStudents;
 
     @Autowired
-    @Qualifier("currentCohort")
-    private Classroom current;
+    @Qualifier("previousStudents")
+    private Students previousStudents;
 
     @Autowired
-    @Qualifier("previousCohort")
-    private Classroom previous;
+    @Qualifier("tcUsaInstructors")
+    private Instructors tcUsaInstructors;
+
+    @Autowired
+    @Qualifier("instructors")
+    private Instructors zipCodeInstructors;
+
+    @Autowired
+    ClassroomConfig config;
 
     @Test
     public void currentCohortTest(){
@@ -36,12 +47,6 @@ public class ClassroomConfigTest {
                 "ID: 2  Name: CS2\n" +
                 "ID: 3  Name: CS3\n" +
                 "ID: 4  Name: CS4\n" +
-                "ID: 5  Name: CS5\n" +
-                "ID: 6  Name: CS6\n" +
-                "ID: 7  Name: CS7\n" +
-                "ID: 8  Name: CS8\n" +
-                "ID: 9  Name: CS9\n" +
-                "ID: 10  Name: CS10\n" +
                 "instructors:\n" +
                 "ID: 0  Name: Kris\n" +
                 "ID: 1  Name: Chris\n" +
@@ -50,10 +55,8 @@ public class ClassroomConfigTest {
                 "ID: 4  Name: Roberto\n";
 
         // When
-        String actual = current.toString();
-
+        String actual = config.currentCohort(currentStudents, zipCodeInstructors).toString();
         // Then
-        logger.log(Level.INFO, current.toString());
         Assert.assertEquals(expected, actual);
     }
 
@@ -67,12 +70,6 @@ public class ClassroomConfigTest {
                 "ID: 2  Name: PrevS2\n" +
                 "ID: 3  Name: PrevS3\n" +
                 "ID: 4  Name: PrevS4\n" +
-                "ID: 5  Name: PrevS5\n" +
-                "ID: 6  Name: PrevS6\n" +
-                "ID: 7  Name: PrevS7\n" +
-                "ID: 8  Name: PrevS8\n" +
-                "ID: 9  Name: PrevS9\n" +
-                "ID: 10  Name: PrevS10\n" +
                 "instructors:\n" +
                 "ID: 0  Name: TcUsaInstructor0\n" +
                 "ID: 1  Name: TcUsaInstructor1\n" +
@@ -81,10 +78,8 @@ public class ClassroomConfigTest {
                 "ID: 4  Name: TcUsaInstructor4\n";
 
         // When
-        String actual = previous.toString();
-
+        String actual = config.previousCohort(previousStudents, tcUsaInstructors).toString();
         // Then
-        logger.log(Level.INFO, previous.toString());
         Assert.assertEquals(expected, actual);
     }
 

@@ -1,5 +1,6 @@
 package com.example.demo.configs;
 
+import com.example.demo.learner.Instructors;
 import com.example.demo.learner.Student;
 import com.example.demo.learner.Students;
 import org.junit.Assert;
@@ -22,6 +23,9 @@ public class StudentsConfigTest {
     @Qualifier("previousStudents")
     private Students previousStudents;
 
+    @Autowired
+    private StudentsConfig config;
+
     @Test
     public void testCurrentStudents(){
         // Given
@@ -31,7 +35,7 @@ public class StudentsConfigTest {
         }
         String expected = sb.toString();
         // When
-        String actual = currentStudents.toString();
+        String actual = config.currentStudents().toString();
         // Then
         Assert.assertEquals(expected, actual);
     }
@@ -45,7 +49,7 @@ public class StudentsConfigTest {
         }
         String expected = sb.toString();
         // When
-        String actual = previousStudents.toString();
+        String actual = config.previousStudents().toString();
         // Then
         Assert.assertEquals(expected, actual);
     }

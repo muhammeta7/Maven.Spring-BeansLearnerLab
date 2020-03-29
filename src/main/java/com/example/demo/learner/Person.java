@@ -1,16 +1,16 @@
-package com.example.demo;
+package com.example.demo.learner;
 
 public class Person {
 
-    private final Long id;
+    private final Integer id;
     private String name;
 
-    public Person(Long id, String name) {
+    public Person(Integer id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 

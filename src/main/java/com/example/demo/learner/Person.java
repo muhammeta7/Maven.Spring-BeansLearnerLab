@@ -1,6 +1,6 @@
 package com.example.demo.learner;
 
-public class Person {
+public abstract class Person {
 
     private final Integer id;
     private String name;

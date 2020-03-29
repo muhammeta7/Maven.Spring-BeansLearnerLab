@@ -47,6 +47,7 @@ public class ClassroomConfigTest {
                 "ID: 2  Name: CS2\n" +
                 "ID: 3  Name: CS3\n" +
                 "ID: 4  Name: CS4\n" +
+                "ID: 5  Name: CS5\n" +
                 "instructors:\n" +
                 "ID: 0  Name: Kris\n" +
                 "ID: 1  Name: Chris\n" +
@@ -70,6 +71,7 @@ public class ClassroomConfigTest {
                 "ID: 2  Name: PrevS2\n" +
                 "ID: 3  Name: PrevS3\n" +
                 "ID: 4  Name: PrevS4\n" +
+                "ID: 5  Name: PrevS5\n" +
                 "instructors:\n" +
                 "ID: 0  Name: TcUsaInstructor0\n" +
                 "ID: 1  Name: TcUsaInstructor1\n" +

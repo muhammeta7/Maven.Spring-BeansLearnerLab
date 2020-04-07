@@ -1,3 +1,9 @@
 /target/
 .DS_Store
 /.idea/
+
+.idea
+target
+demo.iml
+mvnw
+mvnw.cmd
